@@ -74,7 +74,6 @@ public class TestSpike {
   @Transactional(TxType.REQUIRED)
   public void frobnicate() {
     System.out.println("*** frobnicating");
-    System.out.println("*** self: " + this.self);
     System.out.println("*** injected UserTransaction: " + this.injectedUserTransaction);
     System.out.println("*** injected transaction: " + this.injectedTransaction);
   }

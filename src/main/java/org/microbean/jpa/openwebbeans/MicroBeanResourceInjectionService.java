@@ -16,14 +16,61 @@
  */
 package org.microbean.jpa.openwebbeans;
 
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
+import java.lang.annotation.Annotation;
+
+import javax.enterprise.inject.spi.Bean;
+
 import org.apache.webbeans.config.WebBeansContext;
+
+import org.apache.webbeans.spi.ResourceInjectionService;
+
+import org.apache.webbeans.spi.api.ResourceReference;
 
 import org.apache.webbeans.resource.spi.se.StandaloneResourceInjectionService;
 
-public class MicroBeanResourceInjectionService extends StandaloneResourceInjectionService {
+public class MicroBeanResourceInjectionService implements ResourceInjectionService {
 
   public MicroBeanResourceInjectionService(final WebBeansContext context) {
-    super(context);
+    super();
+    System.out.println("*** hello!");
   }
+
+  @Override
+  public void clear() {
+
+  }
+
+  @Override
+  public <X, T extends Annotation> X getResourceReference(final ResourceReference<X, T> resourceReference) {
+    X returnValue = null;
+    if (resourceReference != null) {
+      final Class<X> resourceType = resourceReference.getResourceType();
+      assert resourceType != null;
+      System.out.println("*** resource type: " + resourceType);
+    }
+    return returnValue;
+  }
+
+  @Override
+  public void injectJavaEEResources(final Object managedBeanInstance) {
+    if (managedBeanInstance != null) {
+
+    }
+  }
+  
+  @Override
+  public <T> void writeExternal(final Bean<T> bean, final T actualResource, final ObjectOutput out) throws IOException {
+    
+  }
+
+  @Override
+  public <T> T readExternal(final Bean<T> bean, final ObjectInput out) throws IOException, ClassNotFoundException {
+    throw new UnsupportedOperationException("Not sure yet how to implement");
+  }
+
   
 }

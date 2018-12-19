@@ -71,10 +71,10 @@ public class TestSpike {
 
   private final void onStartup(@Observes @Initialized(ApplicationScoped.class) final Object event, final UserTransaction userTransaction) {
     assertNotNull(userTransaction);
-    assertNotNull(this.injectedTransaction);
-    assertNotNull(this.injectedUserTransaction);
+    // assertNotNull(this.injectedTransaction);
+    // assertNotNull(this.injectedUserTransaction);
     assertNotNull(this.test);
-    assertNotNull(this.testEm);
+    // assertNotNull(this.testEm);
     assertNotNull(this.self);
     this.self.frobnicate();
   }
